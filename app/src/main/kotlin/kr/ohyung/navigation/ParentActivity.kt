@@ -16,7 +16,8 @@ import kr.ohyung.navigation.shared.SharedViewModelFactory
 class ParentActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityParentBinding
-    internal val sharedViewModel: SharedViewModel by viewModels { SharedViewModelFactory() }
+    private val backendConfiguration = BackendConfiguration(BuildConfig.BASE_URL)
+    internal val sharedViewModel: SharedViewModel by viewModels { SharedViewModelFactory(backendConfiguration) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -5,6 +5,7 @@ package kr.ohyung.navigation.user
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import kr.ohyung.navigation.api.UserApi
 import kr.ohyung.navigation.shared.SharedViewModel
 
 internal class UserProfileViewModelFactory(
@@ -14,8 +15,10 @@ internal class UserProfileViewModelFactory(
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(UserProfileViewModel::class.java)) {
-            return UserProfileViewModel(sharedViewModel, userName) as T
+            return UserProfileViewModel(userService, sharedViewModel, userName) as T
         }
         throw RuntimeException("Can't create ViewModel - Unsupported Viewmodel class")
     }
+
+    private val userService = sharedViewModel.retrofit.create(UserApi::class.java)
 }

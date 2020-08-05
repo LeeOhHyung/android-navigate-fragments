@@ -5,12 +5,15 @@ package kr.ohyung.navigation.shared
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import kr.ohyung.navigation.BackendConfiguration
 
-internal class SharedViewModelFactory : ViewModelProvider.Factory {
+internal class SharedViewModelFactory(
+    private val backendConfiguration: BackendConfiguration
+) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(SharedViewModel::class.java)) {
-            return SharedViewModel() as T
+            return SharedViewModel(backendConfiguration) as T
         }
         throw RuntimeException("Can't create ViewModel - Unsupported Viewmodel class")
     }

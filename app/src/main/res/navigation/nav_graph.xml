@@ -15,7 +15,7 @@
         <action
             android:id="@+id/toUserProfile"
             app:destination="@id/user_profile"
-            app:popUpTo="@id/user_profile"
+            app:popUpTo="@id/landing"
             app:popUpToInclusive="true" />
     </fragment>
 

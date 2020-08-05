@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import kr.ohyung.navigation.databinding.FragmentUserProfileBinding
 import kr.ohyung.navigation.utility.sharedViewModel
+import kr.ohyung.navigation.utility.toast
 
 internal class UserProfileFragment : Fragment() {
 
@@ -30,7 +31,11 @@ internal class UserProfileFragment : Fragment() {
 
     private fun updateUi(state: UserProfileUiState) {
         when(state) {
-
+            UserProfileUiState.Loading -> toast("Loading...")
+            is UserProfileUiState.UserProfile -> {
+                binding.textView.text = state.toString()
+            }
+            is UserProfileUiState.Failed -> toast(state.errorMessage)
         }
     }
 
