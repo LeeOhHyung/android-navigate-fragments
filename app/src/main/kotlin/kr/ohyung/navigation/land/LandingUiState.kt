@@ -3,7 +3,9 @@
  */
 package kr.ohyung.navigation.land
 
-internal sealed class LandingUiState {
+import kr.ohyung.navigation.UiState
+
+internal sealed class LandingUiState : UiState {
     object Loading : LandingUiState()
     object Failed : LandingUiState()
 }
