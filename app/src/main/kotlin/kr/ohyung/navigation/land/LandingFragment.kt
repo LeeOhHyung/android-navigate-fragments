@@ -20,7 +20,7 @@ internal class LandingFragment : Fragment() {
     private lateinit var binding: FragmentLandingBinding
     private val viewModel by viewModels<LandingViewModel> { getFactory() }
 
-    val args: LandingFragmentArgs by navArgs()
+    private val args: LandingFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLandingBinding.inflate(inflater, container, false)
