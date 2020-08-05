@@ -1,7 +1,7 @@
 /*
  * Created by Lee Oh Hyoung on 2020/08/05 ..
  */
-package kr.ohyung.navigation
+package kr.ohyung.navigation.utility
 
 import android.util.Log
 import androidx.annotation.MainThread

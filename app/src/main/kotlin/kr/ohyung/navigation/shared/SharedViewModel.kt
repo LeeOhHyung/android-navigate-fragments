@@ -4,7 +4,7 @@
 package kr.ohyung.navigation.shared
 
 import androidx.lifecycle.ViewModel
-import kr.ohyung.navigation.SingleLiveEvent
+import kr.ohyung.navigation.utility.SingleLiveEvent
 
 internal class SharedViewModel : ViewModel() {
 
