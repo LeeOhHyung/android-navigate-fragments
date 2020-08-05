@@ -18,7 +18,7 @@ class ParentActivity : AppCompatActivity() {
 
     private val binding by viewBinding(ActivityParentBinding::inflate)
     private val backendConfiguration = BackendConfiguration(BuildConfig.BASE_URL)
-    internal val sharedViewModel: SharedViewModel by viewModels { SharedViewModelFactory(backendConfiguration) }
+    internal val sharedViewModel by viewModels<SharedViewModel> { SharedViewModelFactory(backendConfiguration) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
