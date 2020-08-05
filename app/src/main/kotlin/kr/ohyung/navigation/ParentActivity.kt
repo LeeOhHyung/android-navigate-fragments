@@ -8,6 +8,7 @@ import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import kr.ohyung.navigation.databinding.ActivityParentBinding
 import kr.ohyung.navigation.land.LandingFragmentArgs
+import kr.ohyung.navigation.land.LandingFragmentDirections
 import kr.ohyung.navigation.shared.NavigationAction
 import kr.ohyung.navigation.shared.SharedViewModel
 import kr.ohyung.navigation.shared.SharedViewModelFactory
@@ -28,9 +29,13 @@ class ParentActivity : AppCompatActivity() {
         sharedViewModel.navigationAction.observe(this, Observer(::navigate))
     }
 
-    private fun navigate(action: NavigationAction) = when(action) {
-        else -> { /* explicitly empty */ }
-    }
+    private fun navigate(action: NavigationAction) =
+        when(action) {
+            is NavigationAction.ToUserProfile -> {
+                navigate(LandingFragmentDirections.toUserProfile(action.userName))
+            }
+            NavigationAction.Done -> finish()
+        }
 
     private fun navigate(direction: NavDirections) = findNavController(R.id.nav_host).navigate(direction)
 

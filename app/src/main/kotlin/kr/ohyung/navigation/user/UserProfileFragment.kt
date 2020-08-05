@@ -17,13 +17,12 @@ import kr.ohyung.navigation.utility.sharedViewModel
 internal class UserProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentUserProfileBinding
-    private val viewModel by viewModels<UserProfileViewModel>()
+    private val viewModel by viewModels<UserProfileViewModel> { getFactory() }
 
     private val args: UserProfileFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentUserProfileBinding.inflate(inflater, container, false)
-
         viewModel.uiState.observe(viewLifecycleOwner, Observer(::updateUi))
 
         return binding.root

@@ -24,7 +24,6 @@ internal class LandingFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLandingBinding.inflate(inflater, container, false)
-
         viewModel.uiState.observe(viewLifecycleOwner, Observer(::updateUi))
 
         return binding.root
@@ -33,7 +32,7 @@ internal class LandingFragment : Fragment() {
     private fun updateUi(state: LandingUiState) {
         when(state) {
             is LandingUiState.Loading -> toast("Loading...")
-            is LandingUiState.Failed -> { /* explicitly empty */ }
+            is LandingUiState.Failed -> toast("Landing is failed...")
         }
     }
 
