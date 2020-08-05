@@ -12,16 +12,16 @@ import kr.ohyung.navigation.land.LandingFragmentDirections
 import kr.ohyung.navigation.shared.NavigationAction
 import kr.ohyung.navigation.shared.SharedViewModel
 import kr.ohyung.navigation.shared.SharedViewModelFactory
+import kr.ohyung.navigation.utility.viewBinding
 
 class ParentActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityParentBinding
+    private val binding by viewBinding(ActivityParentBinding::inflate)
     private val backendConfiguration = BackendConfiguration(BuildConfig.BASE_URL)
     internal val sharedViewModel: SharedViewModel by viewModels { SharedViewModelFactory(backendConfiguration) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityParentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val startArgs = LandingFragmentArgs(LANDING_DURATION).toBundle()
