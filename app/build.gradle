@@ -13,6 +13,8 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0.0"
+
+        buildConfigField "String", "BASE_URL", "\"https://api.github.com/users/\""
     }
 
     buildTypes {
@@ -79,6 +81,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    // Logger
+    implementation 'com.orhanobut:logger:2.2.0'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
