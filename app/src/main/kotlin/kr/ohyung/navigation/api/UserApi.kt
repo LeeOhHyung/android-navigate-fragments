@@ -4,7 +4,7 @@
 package kr.ohyung.navigation.api
 
 import io.reactivex.Single
-import kr.ohyung.navigation.Api
+import kr.ohyung.navigation.common.Api
 import kr.ohyung.navigation.api.response.UserProfileResponse
 import retrofit2.http.GET
 import retrofit2.http.Path

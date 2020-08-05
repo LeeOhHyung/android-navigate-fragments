@@ -3,7 +3,7 @@
  */
 package kr.ohyung.navigation.api.response
 
-import kr.ohyung.navigation.Response
+import kr.ohyung.navigation.common.Response
 
 internal data class UserProfileResponse(
     val login: String,

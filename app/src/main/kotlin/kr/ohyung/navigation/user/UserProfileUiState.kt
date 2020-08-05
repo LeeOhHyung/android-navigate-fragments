@@ -3,7 +3,7 @@
  */
 package kr.ohyung.navigation.user
 
-import kr.ohyung.navigation.UiState
+import kr.ohyung.navigation.common.UiState
 import kr.ohyung.navigation.api.response.UserProfileResponse
 
 internal sealed class UserProfileUiState : UiState {
