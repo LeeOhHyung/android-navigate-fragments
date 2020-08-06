@@ -6,9 +6,11 @@
 
     <TextView
         android:id="@+id/text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="user_profile"
+        style="@style/TextViewStyle"
+        android:layout_width="0dp"
+        android:layout_marginStart="@dimen/external_margin32"
+        android:layout_marginEnd="@dimen/external_margin32"
+        android:gravity="start"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
