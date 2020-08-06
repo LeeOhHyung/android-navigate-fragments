@@ -3,4 +3,4 @@
  */
 package kr.ohyung.navigation
 
-data class BackendConfiguration(val baseUrl: String)
+internal data class BackendConfiguration(val baseUrl: String)
