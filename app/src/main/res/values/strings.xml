@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">android-navigate-fragments</string>
+
+    <string name="user_profile_title">Github User Profile</string>
+    <string name="user_profile_user_name">userName</string>
+    <string name="user_profile_bio">bio</string>
+    <string name="user_profile_company">company</string>
+    <string name="user_profile_email">email</string>
+
 </resources>
