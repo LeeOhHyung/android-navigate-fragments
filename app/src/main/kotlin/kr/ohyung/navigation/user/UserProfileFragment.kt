@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import kr.ohyung.navigation.R
 import kr.ohyung.navigation.databinding.FragmentUserProfileBinding
 import kr.ohyung.navigation.utility.sharedViewModel
@@ -29,10 +30,18 @@ internal class UserProfileFragment : Fragment(R.layout.fragment_user_profile) {
     private fun updateUi(state: UserProfileUiState) {
         when(state) {
             UserProfileUiState.Loading -> toast("Loading...")
-            is UserProfileUiState.UserProfile -> {
-                binding.textView.text = state.toString()
-            }
             is UserProfileUiState.Failed -> toast(state.errorMessage)
+            is UserProfileUiState.UserProfile -> {
+                Glide.with(requireContext())
+                    .load(state.avatarUrl)
+                    .placeholder(R.drawable.octocat)
+                    .into(binding.profileImage)
+
+                binding.userName.text = state.userName
+                binding.bio.text = state.bio
+                binding.company.text = state.company
+                binding.email.text = state.email
+            }
         }
     }
 

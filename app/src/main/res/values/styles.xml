@@ -15,7 +15,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/basic_text_color</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/text_size14</item>
     </style>
 
 </resources>
