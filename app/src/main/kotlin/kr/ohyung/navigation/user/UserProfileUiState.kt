@@ -4,7 +4,7 @@
 package kr.ohyung.navigation.user
 
 import kr.ohyung.navigation.common.UiState
-import kr.ohyung.navigation.api.response.UserProfileResponse
+import kr.ohyung.navigation.data.entity.UserProfile
 
 internal sealed class UserProfileUiState : UiState {
 
@@ -26,7 +26,7 @@ internal sealed class UserProfileUiState : UiState {
     ) : UserProfileUiState()
 }
 
-internal fun UserProfileResponse.toUiState() =
+internal fun UserProfile.toUiState() =
     UserProfileUiState.UserProfile(
         userName = login,
         company = company ?: "",

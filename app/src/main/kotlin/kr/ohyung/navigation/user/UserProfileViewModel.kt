@@ -3,29 +3,30 @@
  */
 package kr.ohyung.navigation.user
 
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.SavedStateHandle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import kr.ohyung.navigation.api.UserApi
-import kr.ohyung.navigation.shared.SharedViewModel
+import kr.ohyung.navigation.base.BaseViewModel
+import kr.ohyung.navigation.data.repository.UserRepository
 import retrofit2.HttpException
 
-internal class UserProfileViewModel(
-    private val userService: UserApi,
-    private val sharedViewModel: SharedViewModel,
-    private val userName: String
-) : ViewModel() {
+internal class UserProfileViewModel @ViewModelInject constructor(
+    private val userRepository: UserRepository,
+    @Assisted private val savedStateHandle: SavedStateHandle
+) : BaseViewModel<UserProfileUiState>() {
 
-    val uiState = MutableLiveData<UserProfileUiState>()
+    override val uiState = MutableLiveData<UserProfileUiState>()
 
     init {
         getUserProfile()
     }
 
     private fun getUserProfile() =
-        userService.getUserProfile(userName)
+        userRepository.getUserProfile(savedStateHandle.get<String>(KEY_USER_NAME)!!)
             .map { response -> response.toUiState() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -41,4 +42,8 @@ internal class UserProfileViewModel(
                         UserProfileUiState.Failed(e.message.toString())
                 }
             })
+
+    companion object {
+        private const val KEY_USER_NAME = "userName"
+    }
 }
