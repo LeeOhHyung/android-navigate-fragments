@@ -1,8 +1,13 @@
-package kr.ohyung.navigation.api
+package kr.ohyung.navigation.di
 
 import com.orhanobut.logger.Logger
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import kr.ohyung.navigation.BuildConfig
-import okhttp3.*
+import kr.ohyung.navigation.api.HeaderInterceptor
+import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONException
 import org.json.JSONObject
@@ -10,35 +15,42 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
-@Deprecated("deprecated because of hilt dependency injection")
-object RetrofitManager {
+@Module
+@InstallIn(SingletonComponent::class)
+object RetrofitModule {
 
-    private const val TAG: String = "RetrofitManager"
+    private const val TAG: String = "NetworkModule"
     private const val CONNECT_TIMEOUT: Long = 30L
     private const val WRITE_TIMEOUT: Long = 30L
     private const val READ_TIMEOUT: Long = 30L
 
-    fun getRetrofit(baseUrl: String) : Retrofit =
-        Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(getOkHttpClient())
-            .build()
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .baseUrl(BuildConfig.BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .client(okHttpClient)
+        .build()
 
-    private fun getOkHttpClient(): OkHttpClient =
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(loggerInterceptor: HttpLoggingInterceptor): OkHttpClient =
         OkHttpClient.Builder()
             .retryOnConnectionFailure(true)
             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
-            .addInterceptor(getHttpLoggerInterceptor())
+            .addInterceptor(loggerInterceptor)
             .addInterceptor(HeaderInterceptor())
             .build()
 
-    private fun getHttpLoggerInterceptor(): HttpLoggingInterceptor =
-        HttpLoggingInterceptor(createLogger())
+    @Provides
+    @Singleton
+    fun provideHttpLoggerInterceptor(logger: HttpLoggingInterceptor.Logger): HttpLoggingInterceptor =
+        HttpLoggingInterceptor(logger)
             .apply {
                 level =
                     if(BuildConfig.DEBUG)
@@ -47,7 +59,9 @@ object RetrofitManager {
                         HttpLoggingInterceptor.Level.NONE
             }
 
-    private fun createLogger(): HttpLoggingInterceptor.Logger =
+    @Provides
+    @Singleton
+    fun provideLogger(): HttpLoggingInterceptor.Logger =
         object: HttpLoggingInterceptor.Logger {
             override fun log(message: String) {
                 try {
@@ -56,6 +70,6 @@ object RetrofitManager {
                 } catch (e: JSONException) {
                     Logger.t(TAG).d(message)
                 }
+            }
         }
-    }
 }

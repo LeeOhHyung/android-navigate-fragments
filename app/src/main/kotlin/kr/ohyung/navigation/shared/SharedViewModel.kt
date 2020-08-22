@@ -3,15 +3,8 @@
  */
 package kr.ohyung.navigation.shared
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import kr.ohyung.navigation.BackendConfiguration
-import kr.ohyung.navigation.api.RetrofitManager
 import kr.ohyung.navigation.utility.SingleLiveEvent
 
-internal class SharedViewModel(
-    backendConfiguration: BackendConfiguration
-) : ViewModel() {
-
-    val retrofit = RetrofitManager.getRetrofit(backendConfiguration.baseUrl)
-    val navigationAction = SingleLiveEvent<NavigationAction>()
-}
+internal class SharedViewModel @ViewModelInject constructor() : ViewModel()

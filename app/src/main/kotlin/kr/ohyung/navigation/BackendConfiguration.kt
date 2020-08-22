@@ -3,4 +3,5 @@
  */
 package kr.ohyung.navigation
 
+@Deprecated("deprecated because of hilt dependency injection")
 internal data class BackendConfiguration(val baseUrl: String)
