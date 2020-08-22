@@ -9,7 +9,7 @@ import androidx.viewbinding.ViewBinding
 import kr.ohyung.navigation.common.UiState
 import kr.ohyung.navigation.utility.navigate
 
-abstract class BaseFragment<T: ViewBinding, VM: BaseViewModel, State: UiState>(
+abstract class BaseFragment<T: ViewBinding, VM: BaseViewModel<State>, State: UiState>(
     @LayoutRes layoutId: Int
 ) : Fragment(layoutId) {
 

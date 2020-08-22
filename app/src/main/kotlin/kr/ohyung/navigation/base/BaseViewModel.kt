@@ -8,9 +8,9 @@ import kr.ohyung.navigation.common.UiState
 import kr.ohyung.navigation.shared.NavigationAction
 import kr.ohyung.navigation.utility.SingleLiveEvent
 
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel<State: UiState> : ViewModel() {
 
-    abstract val uiState: MutableLiveData<out UiState>
+    abstract val uiState: MutableLiveData<State>
 
     val navigationAction = SingleLiveEvent<NavigationAction>()
     private val compositeDisposable = CompositeDisposable()
@@ -20,7 +20,7 @@ abstract class BaseViewModel : ViewModel() {
         super.onCleared()
     }
 
-    protected fun BaseViewModel.navigate(action: NavigationAction) {
+    protected fun BaseViewModel<*>.navigate(action: NavigationAction) {
         navigationAction.value = action
     }
 

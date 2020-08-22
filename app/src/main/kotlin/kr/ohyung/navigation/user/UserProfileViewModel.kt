@@ -17,7 +17,7 @@ import retrofit2.HttpException
 internal class UserProfileViewModel @ViewModelInject constructor(
     private val userService: UserApi,
     @Assisted private val savedStateHandle: SavedStateHandle
-) : BaseViewModel() {
+) : BaseViewModel<UserProfileUiState>() {
 
     override val uiState = MutableLiveData<UserProfileUiState>()
 
@@ -26,7 +26,7 @@ internal class UserProfileViewModel @ViewModelInject constructor(
     }
 
     private fun getUserProfile() =
-        userService.getUserProfile(savedStateHandle.get<String>("userName")!!)
+        userService.getUserProfile(savedStateHandle.get<String>(KEY_USER_NAME)!!)
             .map { response -> response.toUiState() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -42,4 +42,8 @@ internal class UserProfileViewModel @ViewModelInject constructor(
                         UserProfileUiState.Failed(e.message.toString())
                 }
             })
+
+    companion object {
+        private const val KEY_USER_NAME = "userName"
+    }
 }

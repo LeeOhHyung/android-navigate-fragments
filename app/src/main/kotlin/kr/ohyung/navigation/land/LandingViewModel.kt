@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
 
 internal class LandingViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
-) : BaseViewModel() {
+) : BaseViewModel<LandingUiState>() {
 
     override val uiState = MutableLiveData<LandingUiState>()
 
