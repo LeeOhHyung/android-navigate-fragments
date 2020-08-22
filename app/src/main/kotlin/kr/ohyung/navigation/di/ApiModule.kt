@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kr.ohyung.navigation.api.UserApi
+import kr.ohyung.navigation.data.UserApi
 import retrofit2.Retrofit
 import javax.inject.Singleton
 

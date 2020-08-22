@@ -20,6 +20,7 @@ internal class LandingViewModel @ViewModelInject constructor(
 ) : BaseViewModel<LandingUiState>() {
 
     override val uiState = MutableLiveData<LandingUiState>()
+    private val delay = savedStateHandle.get<Long>(KEY_DURATION) ?: 0L
 
     init {
         uiState.value = LandingUiState.Loading
@@ -27,12 +28,12 @@ internal class LandingViewModel @ViewModelInject constructor(
     }
 
     private fun doOnStart() =
-        Single.timer(savedStateHandle.get<Long>(KEY_DURATION) ?: 0L, TimeUnit.MILLISECONDS)
+        Single.timer(delay, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object: DisposableSingleObserver<Long>() {
                 override fun onSuccess(result: Long) {
-                    navigate(NavigationAction.ToUserProfile("LeeOhHyung"))
+                    navigate(NavigationAction.ToUserProfile(KEY_MY_NAME))
                 }
 
                 override fun onError(e: Throwable) {
@@ -42,5 +43,6 @@ internal class LandingViewModel @ViewModelInject constructor(
 
     companion object {
         private const val KEY_DURATION = "duration"
+        private const val KEY_MY_NAME = "LeeOhHyung"
     }
 }

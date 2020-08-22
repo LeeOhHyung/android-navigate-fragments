@@ -10,12 +10,12 @@ import androidx.lifecycle.SavedStateHandle
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-import kr.ohyung.navigation.api.UserApi
 import kr.ohyung.navigation.base.BaseViewModel
+import kr.ohyung.navigation.data.repository.UserRepository
 import retrofit2.HttpException
 
 internal class UserProfileViewModel @ViewModelInject constructor(
-    private val userService: UserApi,
+    private val userRepository: UserRepository,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : BaseViewModel<UserProfileUiState>() {
 
@@ -26,7 +26,7 @@ internal class UserProfileViewModel @ViewModelInject constructor(
     }
 
     private fun getUserProfile() =
-        userService.getUserProfile(savedStateHandle.get<String>(KEY_USER_NAME)!!)
+        userRepository.getUserProfile(savedStateHandle.get<String>(KEY_USER_NAME)!!)
             .map { response -> response.toUiState() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

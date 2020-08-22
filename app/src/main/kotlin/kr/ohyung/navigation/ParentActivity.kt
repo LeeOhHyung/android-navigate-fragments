@@ -23,7 +23,7 @@ class ParentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val startArgs = LandingFragmentArgs(LANDING_DURATION).toBundle()
+        val startArgs = LandingFragmentArgs(2500L).toBundle()
         findNavController(R.id.nav_host).setGraph(R.navigation.nav_graph, startArgs)
     }
 
@@ -36,9 +36,4 @@ class ParentActivity : AppCompatActivity() {
         }
 
     private fun navigate(direction: NavDirections) = findNavController(R.id.nav_host).navigate(direction)
-
-    companion object {
-
-        private const val LANDING_DURATION = 2500L
-    }
 }

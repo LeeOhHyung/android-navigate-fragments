@@ -6,8 +6,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kr.ohyung.navigation.BuildConfig
-import kr.ohyung.navigation.api.HeaderInterceptor
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import org.json.JSONException
 import org.json.JSONObject
@@ -26,6 +27,8 @@ object RetrofitModule {
     private const val WRITE_TIMEOUT: Long = 30L
     private const val READ_TIMEOUT: Long = 30L
 
+    private const val HEADER_ACCEPT = "Accept"
+
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
@@ -37,14 +40,17 @@ object RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(loggerInterceptor: HttpLoggingInterceptor): OkHttpClient =
+    fun provideOkHttpClient(
+        loggerInterceptor: HttpLoggingInterceptor,
+        headerInterceptor: Interceptor
+    ): OkHttpClient =
         OkHttpClient.Builder()
             .retryOnConnectionFailure(true)
             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
             .addInterceptor(loggerInterceptor)
-            .addInterceptor(HeaderInterceptor())
+            .addInterceptor(headerInterceptor)
             .build()
 
     @Provides
@@ -69,6 +75,23 @@ object RetrofitModule {
                     Logger.t(TAG).json(message)
                 } catch (e: JSONException) {
                     Logger.t(TAG).d(message)
+                }
+            }
+        }
+
+    @Provides
+    @Singleton
+    fun provideHeaderIntercept(): Interceptor =
+        object: Interceptor {
+            override fun intercept(chain: Interceptor.Chain): Response {
+                return with(chain.request()) {
+                    newBuilder()
+                        .apply {
+                            header(HEADER_ACCEPT, "application/vnd.github.v3+json")
+                            method(method, body)
+                        }
+                        .build()
+                        .let { newRequest -> chain.proceed(newRequest) }
                 }
             }
         }
