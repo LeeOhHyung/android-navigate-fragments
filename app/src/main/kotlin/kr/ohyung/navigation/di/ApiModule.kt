@@ -16,5 +16,4 @@ object ApiModule {
     @Singleton
     internal fun provideUserApi(retrofit: Retrofit): UserApi =
         retrofit.create(UserApi::class.java)
-
 }

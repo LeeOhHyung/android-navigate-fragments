@@ -5,6 +5,5 @@ package kr.ohyung.navigation.shared
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
-import kr.ohyung.navigation.utility.SingleLiveEvent
 
 internal class SharedViewModel @ViewModelInject constructor() : ViewModel()

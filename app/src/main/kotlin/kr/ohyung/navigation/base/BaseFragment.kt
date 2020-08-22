@@ -6,15 +6,18 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.viewbinding.ViewBinding
+import kr.ohyung.navigation.common.UiState
 import kr.ohyung.navigation.utility.navigate
 
-abstract class BaseFragment<T: ViewBinding, VM: BaseViewModel>(
+abstract class BaseFragment<T: ViewBinding, VM: BaseViewModel, State: UiState>(
     @LayoutRes layoutId: Int
 ) : Fragment(layoutId) {
 
     abstract val binding: T
 
     abstract val viewModel: VM
+
+    abstract fun updateUi(state: State)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

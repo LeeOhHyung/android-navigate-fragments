@@ -19,7 +19,7 @@ internal class UserProfileViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : BaseViewModel() {
 
-    val uiState = MutableLiveData<UserProfileUiState>()
+    override val uiState = MutableLiveData<UserProfileUiState>()
 
     init {
         getUserProfile()

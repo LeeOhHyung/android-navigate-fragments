@@ -19,7 +19,7 @@ internal class LandingViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : BaseViewModel() {
 
-    val uiState = MutableLiveData<LandingUiState>()
+    override val uiState = MutableLiveData<LandingUiState>()
 
     init {
         uiState.value = LandingUiState.Loading
