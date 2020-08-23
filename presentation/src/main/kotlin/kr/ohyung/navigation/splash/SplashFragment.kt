@@ -23,10 +23,10 @@ internal class SplashFragment : BaseFragment<FragmentSplashBinding,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.uiState.observe(viewLifecycleOwner, Observer(::updateUi))
+        viewModel.uiState.observe(viewLifecycleOwner, Observer(::render))
     }
 
-    override fun updateUi(state: SplashUiState) {
+    override fun render(state: SplashUiState) {
         when(state) {
             is SplashUiState.Loading -> toast("Loading...")
             is SplashUiState.Failed -> toast("Landing is failed...")

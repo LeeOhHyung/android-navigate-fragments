@@ -1,7 +1,7 @@
 /*
  * Created by Lee Oh Hyoung on 2020/08/05 .. 
  */
-package kr.ohyung.navigation.shared
+package kr.ohyung.navigation
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel

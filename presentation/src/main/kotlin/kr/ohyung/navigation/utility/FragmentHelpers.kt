@@ -6,8 +6,9 @@ package kr.ohyung.navigation.utility
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import kr.ohyung.common.shared.Action
 import kr.ohyung.navigation.ParentActivity
-import kr.ohyung.navigation.shared.NavigationAction
+import kr.ohyung.navigation.NavigationAction
 
 internal val Fragment.sharedViewModel get() =
     (requireActivity() as ParentActivity).sharedViewModel
@@ -15,7 +16,7 @@ internal val Fragment.sharedViewModel get() =
 internal val Fragment.parentActivity get() =
     (requireActivity() as ParentActivity)
 
-fun Fragment.navigate(action: NavigationAction) =
+fun Fragment.navigate(action: Action) =
     (requireActivity() as ParentActivity).navigate(action)
 
 internal fun Fragment.toast(@StringRes message: Int) =

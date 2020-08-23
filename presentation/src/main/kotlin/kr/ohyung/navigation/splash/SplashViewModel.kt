@@ -12,7 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kr.ohyung.navigation.base.BaseViewModel
-import kr.ohyung.navigation.shared.NavigationAction
+import kr.ohyung.navigation.NavigationAction
 import java.util.concurrent.TimeUnit
 
 internal class SplashViewModel @ViewModelInject constructor(

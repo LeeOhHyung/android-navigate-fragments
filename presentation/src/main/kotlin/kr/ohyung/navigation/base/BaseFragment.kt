@@ -17,7 +17,7 @@ abstract class BaseFragment<T: ViewBinding, VM: BaseViewModel<State>, State: UiS
 
     abstract val viewModel: VM
 
-    abstract fun updateUi(state: State)
+    abstract fun render(state: State)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

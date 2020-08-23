@@ -23,10 +23,10 @@ internal class UserProfileFragment : BaseFragment<FragmentUserProfileBinding,
     override val viewModel by viewModels<UserProfileViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel.uiState.observe(viewLifecycleOwner, Observer(::updateUi))
+        viewModel.uiState.observe(viewLifecycleOwner, Observer(::render))
     }
 
-    override fun updateUi(state: UserProfileUiState) {
+    override fun render(state: UserProfileUiState) {
         when(state) {
             UserProfileUiState.Loading -> toast("Loading...")
             is UserProfileUiState.Failed -> toast(state.errorMessage)
