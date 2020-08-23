@@ -4,9 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import kr.ohyung.navigation.common.UiState
+import kr.ohyung.common.utility.SingleLiveEvent
+import kr.ohyung.common.marks.UiState
 import kr.ohyung.navigation.shared.NavigationAction
-import kr.ohyung.navigation.utility.SingleLiveEvent
 
 abstract class BaseViewModel<State: UiState> : ViewModel() {
 

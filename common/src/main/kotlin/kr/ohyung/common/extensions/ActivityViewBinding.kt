@@ -1,7 +1,7 @@
 /*
  * Created by Lee Oh Hyoung on 2020/08/06 .. 
  */
-package kr.ohyung.navigation.utility
+package kr.ohyung.common.extensions
 
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity

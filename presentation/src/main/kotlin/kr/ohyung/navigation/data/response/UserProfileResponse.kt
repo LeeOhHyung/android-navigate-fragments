@@ -3,7 +3,7 @@
  */
 package kr.ohyung.navigation.data.response
 
-import kr.ohyung.navigation.common.Response
+import kr.ohyung.common.marks.Response
 import kr.ohyung.navigation.data.entity.UserProfile
 
 data class UserProfileResponse(

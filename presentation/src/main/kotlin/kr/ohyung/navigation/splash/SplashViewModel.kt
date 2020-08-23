@@ -1,7 +1,7 @@
 /*
  * Created by Lee Oh Hyoung on 2020/08/05 .. 
  */
-package kr.ohyung.navigation.land
+package kr.ohyung.navigation.splash
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
@@ -15,15 +15,15 @@ import kr.ohyung.navigation.base.BaseViewModel
 import kr.ohyung.navigation.shared.NavigationAction
 import java.util.concurrent.TimeUnit
 
-internal class LandingViewModel @ViewModelInject constructor(
+internal class SplashViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
-) : BaseViewModel<LandingUiState>() {
+) : BaseViewModel<SplashUiState>() {
 
-    override val uiState = MutableLiveData<LandingUiState>()
+    override val uiState = MutableLiveData<SplashUiState>()
     private val delay = savedStateHandle.get<Long>(KEY_DURATION) ?: 0L
 
     init {
-        uiState.value = LandingUiState.Loading
+        uiState.value = SplashUiState.Loading
         doOnStart()
     }
 
@@ -37,7 +37,7 @@ internal class LandingViewModel @ViewModelInject constructor(
                 }
 
                 override fun onError(e: Throwable) {
-                    uiState.value = LandingUiState.Failed
+                    uiState.value = SplashUiState.Failed
                 }
             })
 

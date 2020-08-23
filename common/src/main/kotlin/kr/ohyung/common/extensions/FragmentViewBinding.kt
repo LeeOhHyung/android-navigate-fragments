@@ -1,7 +1,7 @@
 /*
  * Created by Lee Oh Hyoung on 2020/08/06 .. 
  */
-package kr.ohyung.navigation.utility
+package kr.ohyung.common.extensions
 
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -23,7 +23,7 @@ class FragmentViewBinding<T : ViewBinding>(
     init {
         fragment.lifecycle.addObserver(object: DefaultLifecycleObserver {
             override fun onCreate(owner: LifecycleOwner) {
-                fragment.viewLifecycleOwnerLiveData.observe(fragment) { viewLifecycleOwner ->
+                fragment.viewLifecycleOwnerLiveData.observe<LifecycleOwner>(fragment) { viewLifecycleOwner ->
                     viewLifecycleOwner.lifecycle.addObserver(object: DefaultLifecycleObserver {
                         override fun onDestroy(owner: LifecycleOwner) {
                             binding = null
