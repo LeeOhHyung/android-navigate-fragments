@@ -1,5 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kr.ohyung.remote">
-
-    /
-</manifest>
+<manifest package="kr.ohyung.remote" />

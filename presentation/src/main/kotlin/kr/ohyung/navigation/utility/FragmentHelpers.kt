@@ -13,5 +13,5 @@ internal val Fragment.sharedViewModel get() =
 internal val Fragment.parentActivity get() =
     (requireActivity() as ParentActivity)
 
-fun Fragment.navigate(action: Action) =
+internal fun Fragment.navigate(action: Action) =
     (requireActivity() as ParentActivity).navigate(action)
