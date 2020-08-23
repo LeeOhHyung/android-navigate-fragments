@@ -1,11 +1,8 @@
-package kr.ohyung.domain.usecase
+package kr.ohyung.domain.usecase.base
 
 import io.reactivex.Scheduler
 import io.reactivex.Single
 
-/**
- * Created by Lee Oh Hyung on 2020/08/23.
- */
 abstract class SingleUseCase<T, in Params>(
     private val executorScheduler: Scheduler,
     private val postExecutionScheduler: Scheduler
