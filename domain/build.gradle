@@ -1,20 +1,6 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-
-android {
-    compileSdkVersion 30
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-        test.java.srcDirs += 'src/test/kotlin'
-    }
-}
+apply plugin: 'kotlin'
 
 dependencies {
-    implementation project(':domain')
-
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // RxJava2
