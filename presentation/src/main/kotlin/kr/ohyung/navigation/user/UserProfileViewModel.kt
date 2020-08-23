@@ -11,7 +11,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kr.ohyung.navigation.base.BaseViewModel
-import kr.ohyung.navigation.data.repository.UserRepository
+import kr.ohyung.domain.repository.UserRepository
 import retrofit2.HttpException
 
 internal class UserProfileViewModel @ViewModelInject constructor(

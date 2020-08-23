@@ -1,6 +1,7 @@
 package kr.ohyung.navigation.data.repository
 
 import io.reactivex.Single
+import kr.ohyung.domain.repository.UserRepository
 import kr.ohyung.navigation.data.UserApi
 import kr.ohyung.navigation.data.response.toEntity
 import kr.ohyung.navigation.data.entity.UserProfile

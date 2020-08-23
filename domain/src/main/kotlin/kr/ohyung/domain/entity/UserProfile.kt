@@ -1,6 +1,6 @@
-package kr.ohyung.navigation.data.entity
+package kr.ohyung.domain.entity
 
-import kr.ohyung.common.marks.Entity
+import kr.ohyung.domain.Entity
 
 data class UserProfile(
     val id: Long,
