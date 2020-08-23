@@ -1,16 +1,6 @@
 # ISSUE
 
-## 설명
+## Description
+Please explain what kind of work in this PR is about.
 
-
-## 작업 예정 사항
-- [ ] 
-- [ ] 
-- [ ] 
-
-## 스크린샷
-<p>
-    <img src="" width="300" />
-</p>
-
-## 참고
+## Reference
