@@ -7,7 +7,7 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.0"
+    buildToolsVersion "30.0.1"
 
     defaultConfig {
         applicationId "kr.ohyung.navigation"
@@ -46,6 +46,8 @@ android {
 }
 
 dependencies {
+
+    implementation project(':data')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
