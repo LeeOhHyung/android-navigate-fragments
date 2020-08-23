@@ -9,11 +9,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import kr.ohyung.common.extensions.toast
 import kr.ohyung.common.extensions.viewBinding
 import kr.ohyung.navigation.R
 import kr.ohyung.navigation.base.BaseFragment
 import kr.ohyung.navigation.databinding.FragmentUserProfileBinding
-import kr.ohyung.navigation.utility.toast
 
 @AndroidEntryPoint
 internal class UserProfileFragment : BaseFragment<FragmentUserProfileBinding,

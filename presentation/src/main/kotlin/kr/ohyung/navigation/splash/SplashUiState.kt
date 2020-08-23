@@ -3,7 +3,7 @@
  */
 package kr.ohyung.navigation.splash
 
-import kr.ohyung.common.marks.UiState
+import kr.ohyung.common.shared.UiState
 
 internal sealed class SplashUiState : UiState {
     object Loading : SplashUiState()

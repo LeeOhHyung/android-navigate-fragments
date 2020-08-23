@@ -6,7 +6,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import kr.ohyung.common.shared.Action
 import kr.ohyung.common.utility.SingleLiveEvent
-import kr.ohyung.common.marks.UiState
+import kr.ohyung.common.shared.UiState
 
 abstract class BaseViewModel<State: UiState> : ViewModel() {
 

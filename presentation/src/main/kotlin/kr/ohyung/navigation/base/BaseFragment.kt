@@ -6,7 +6,7 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.viewbinding.ViewBinding
-import kr.ohyung.common.marks.UiState
+import kr.ohyung.common.shared.UiState
 import kr.ohyung.navigation.utility.navigate
 
 abstract class BaseFragment<T: ViewBinding, VM: BaseViewModel<State>, State: UiState>(

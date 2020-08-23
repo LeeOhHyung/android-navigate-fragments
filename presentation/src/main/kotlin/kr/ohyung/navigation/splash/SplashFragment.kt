@@ -8,11 +8,11 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
+import kr.ohyung.common.extensions.toast
 import kr.ohyung.common.extensions.viewBinding
 import kr.ohyung.navigation.R
 import kr.ohyung.navigation.base.BaseFragment
 import kr.ohyung.navigation.databinding.FragmentSplashBinding
-import kr.ohyung.navigation.utility.toast
 
 @AndroidEntryPoint
 internal class SplashFragment : BaseFragment<FragmentSplashBinding,

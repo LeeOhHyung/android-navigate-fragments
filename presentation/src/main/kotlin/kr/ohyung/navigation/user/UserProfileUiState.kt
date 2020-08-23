@@ -3,7 +3,7 @@
  */
 package kr.ohyung.navigation.user
 
-import kr.ohyung.common.marks.UiState
+import kr.ohyung.common.shared.UiState
 import kr.ohyung.navigation.data.entity.UserProfile
 
 internal sealed class UserProfileUiState : UiState {
