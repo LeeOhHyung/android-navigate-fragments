@@ -15,8 +15,6 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0.0"
-
-        buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
     }
 
     buildTypes {

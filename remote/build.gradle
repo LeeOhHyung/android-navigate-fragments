@@ -6,6 +6,10 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 30
 
+    defaultConfig {
+        buildConfigField "String", "BASE_URL", "\"https://api.github.com/\""
+    }
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         test.java.srcDirs += 'src/test/kotlin'
@@ -13,7 +17,7 @@ android {
 }
 
 dependencies {
-    api project(':domain')
+    implementation project(':data')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
@@ -22,9 +26,20 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
 
+    // Retrofit, OkHttp, Gson
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.7.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.2'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
     // Hilt
     implementation "com.google.dagger:hilt-android:2.28.3-alpha"
     kapt "com.google.dagger:hilt-android-compiler:2.28.3-alpha"
+
+    // Logger
+    implementation 'com.orhanobut:logger:2.2.0'
 
     // Testing
     testImplementation 'junit:junit:4.13'

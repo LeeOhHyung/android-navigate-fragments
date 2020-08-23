@@ -1,11 +1,11 @@
 /*
  * Created by Lee Oh Hyoung on 2020/08/06 .. 
  */
-package kr.ohyung.navigation.data
+package kr.ohyung.remote.api
 
 import io.reactivex.Single
-import kr.ohyung.common.marks.Api
-import kr.ohyung.navigation.data.response.UserProfileResponse
+import kr.ohyung.remote.Api
+import kr.ohyung.remote.response.UserProfileResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 

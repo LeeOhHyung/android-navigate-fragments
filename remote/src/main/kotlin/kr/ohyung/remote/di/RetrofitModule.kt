@@ -1,11 +1,12 @@
-package kr.ohyung.navigation.di
+package kr.ohyung.remote.di
 
 import com.orhanobut.logger.Logger
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import kr.ohyung.navigation.BuildConfig
+import dagger.hilt.android.components.ApplicationComponent
+import kr.ohyung.data.BuildConfig
+import kr.ohyung.remote.BuildConfig.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ApplicationComponent::class)
 object RetrofitModule {
 
     private const val TAG: String = "NetworkModule"
@@ -32,7 +33,7 @@ object RetrofitModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(BuildConfig.BASE_URL)
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .client(okHttpClient)

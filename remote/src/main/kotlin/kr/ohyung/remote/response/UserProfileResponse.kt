@@ -1,10 +1,10 @@
 /*
  * Created by Lee Oh Hyoung on 2020/08/06 .. 
  */
-package kr.ohyung.navigation.data.response
+package kr.ohyung.remote.response
 
-import kr.ohyung.common.marks.Response
-import kr.ohyung.navigation.data.entity.UserProfile
+import kr.ohyung.domain.entity.UserProfile
+import kr.ohyung.remote.Response
 
 data class UserProfileResponse(
     val login: String,
