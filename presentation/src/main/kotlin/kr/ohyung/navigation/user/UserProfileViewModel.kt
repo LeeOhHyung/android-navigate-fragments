@@ -12,7 +12,6 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 import kr.ohyung.domain.usecase.GetUserProfileUseCase
 import kr.ohyung.navigation.base.BaseViewModel
-import retrofit2.HttpException
 
 internal class UserProfileViewModel @ViewModelInject constructor(
     private val getUserProfileUseCase: GetUserProfileUseCase,
@@ -38,7 +37,7 @@ internal class UserProfileViewModel @ViewModelInject constructor(
 
                 override fun onError(e: Throwable) {
                     uiState.value = when (e) {
-                        is HttpException -> UserProfileUiState.Failed(e.message())
+                        //is HttpException -> UserProfileUiState.Failed(e.message())
                         else -> UserProfileUiState.Failed(e.message.toString())
                     }
                 }

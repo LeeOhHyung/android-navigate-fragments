@@ -4,7 +4,7 @@
 package kr.ohyung.navigation.user
 
 import kr.ohyung.common.shared.UiState
-import kr.ohyung.navigation.data.entity.UserProfile
+import kr.ohyung.domain.entity.UserProfile
 
 internal sealed class UserProfileUiState : UiState {
 
