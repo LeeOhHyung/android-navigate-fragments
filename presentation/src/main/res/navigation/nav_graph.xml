@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splash">
+
+    <fragment
+        android:id="@+id/splash"
+        android:name="kr.ohyung.navigation.splash.SplashFragment"
+        tools:layout="@layout/fragment_splash">
+        <argument
+            android:name="duration"
+            app:argType="long" />
+        <action
+            android:id="@+id/toUserProfile"
+            app:destination="@id/user_profile"
+            app:popUpTo="@id/splash"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/user_profile"
+        android:name="kr.ohyung.navigation.user.UserProfileFragment"
+        tools:layout="@layout/fragment_user_profile">
+        <argument
+            android:name="userName"
+            app:argType="string"/>
+    </fragment>
+
+</navigation>

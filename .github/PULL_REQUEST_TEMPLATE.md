@@ -1,27 +1,18 @@
 # PULL REQUEST
 
-## 설명
+## Description
 
 
-## 작업사항
+## What should be done
 - [ ] 
 - [ ] 
 - [ ] 
 
 
-## 링크
+## Reference
 
 
-## 스크린샷
+## ScreenShot
 <p>
 	<img src="", width="300" />
 </p>
-
-
-## PR 타입
-- [ ] Feature
-- [ ] Patch
-- [ ] Hotfix
-- [ ] Release
-- [ ] Documentation
-- [ ] Refactoring
