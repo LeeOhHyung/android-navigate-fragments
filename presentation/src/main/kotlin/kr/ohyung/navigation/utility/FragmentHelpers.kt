@@ -4,7 +4,7 @@
 package kr.ohyung.navigation.utility
 
 import androidx.fragment.app.Fragment
-import kr.ohyung.common.shared.Action
+import kr.ohyung.navigation.NavigationAction
 import kr.ohyung.navigation.ParentActivity
 
 internal val Fragment.sharedViewModel get() =
@@ -13,5 +13,5 @@ internal val Fragment.sharedViewModel get() =
 internal val Fragment.parentActivity get() =
     (requireActivity() as ParentActivity)
 
-internal fun Fragment.navigate(action: Action) =
+internal fun Fragment.navigate(action: NavigationAction) =
     (requireActivity() as ParentActivity).navigate(action)

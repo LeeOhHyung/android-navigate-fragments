@@ -4,15 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import kr.ohyung.common.shared.Action
-import kr.ohyung.common.utility.SingleLiveEvent
 import kr.ohyung.common.shared.UiState
+import kr.ohyung.common.utility.SingleLiveEvent
+import kr.ohyung.navigation.NavigationAction
 
 abstract class BaseViewModel<State: UiState> : ViewModel() {
 
     abstract val uiState: MutableLiveData<State>
 
-    val navigationAction = SingleLiveEvent<Action>()
+    val navigationAction = SingleLiveEvent<NavigationAction>()
     private val compositeDisposable = CompositeDisposable()
 
     override fun onCleared() {
@@ -20,7 +20,7 @@ abstract class BaseViewModel<State: UiState> : ViewModel() {
         super.onCleared()
     }
 
-    protected fun BaseViewModel<*>.navigate(action: Action) {
+    protected fun BaseViewModel<*>.navigate(action: NavigationAction) {
         navigationAction.value = action
     }
 

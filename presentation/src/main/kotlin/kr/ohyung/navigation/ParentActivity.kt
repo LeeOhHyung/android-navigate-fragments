@@ -7,7 +7,6 @@ import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ohyung.common.extensions.viewBinding
-import kr.ohyung.common.shared.Action
 import kr.ohyung.navigation.databinding.ActivityParentBinding
 import kr.ohyung.navigation.splash.SplashFragmentArgs
 import kr.ohyung.navigation.splash.SplashFragmentDirections
@@ -26,7 +25,7 @@ class ParentActivity : AppCompatActivity() {
         findNavController(R.id.nav_host).setGraph(R.navigation.nav_graph, startArgs)
     }
 
-    internal fun navigate(action: Action) =
+    internal fun navigate(action: NavigationAction) =
         when(val navAction = action as? NavigationAction) {
             is NavigationAction.ToUserProfile -> {
                 navigate(SplashFragmentDirections.toUserProfile(navAction.userName))

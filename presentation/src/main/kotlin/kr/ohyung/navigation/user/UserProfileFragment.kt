@@ -5,22 +5,22 @@ package kr.ohyung.navigation.user
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.bumptech.glide.Glide
+import androidx.navigation.navGraphViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ohyung.common.extensions.toast
 import kr.ohyung.common.extensions.viewBinding
 import kr.ohyung.navigation.R
 import kr.ohyung.navigation.base.BaseFragment
 import kr.ohyung.navigation.databinding.FragmentUserProfileBinding
+import kr.ohyung.navigation.utility.extension.load
 
 @AndroidEntryPoint
 internal class UserProfileFragment : BaseFragment<FragmentUserProfileBinding,
         UserProfileViewModel, UserProfileUiState>(R.layout.fragment_user_profile) {
 
     override val binding by viewBinding(FragmentUserProfileBinding::bind)
-    override val viewModel by viewModels<UserProfileViewModel>()
+    override val viewModel by navGraphViewModels<UserProfileViewModel>(R.id.nav_graph) { defaultViewModelProviderFactory }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.uiState.observe(viewLifecycleOwner, Observer(::render))
@@ -31,15 +31,13 @@ internal class UserProfileFragment : BaseFragment<FragmentUserProfileBinding,
             UserProfileUiState.Loading -> toast("Loading...")
             is UserProfileUiState.Failed -> toast(state.errorMessage)
             is UserProfileUiState.UserProfile -> {
-                Glide.with(requireContext())
-                    .load(state.avatarUrl)
-                    .placeholder(R.drawable.octocat)
-                    .into(binding.profileImage)
-
-                binding.userName.text = state.userName
-                binding.bio.text = state.bio
-                binding.company.text = state.company
-                binding.email.text = state.email
+                with(binding) {
+                    profileImage.load(imageUrl = state.avatarUrl, placeHolder = R.drawable.octocat)
+                    userName.text = state.userName
+                    bio.text = state.bio
+                    company.text = state.company
+                    email.text = state.email
+                }
             }
         }
     }

@@ -5,8 +5,8 @@ package kr.ohyung.navigation.splash
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.navGraphViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ohyung.common.extensions.toast
 import kr.ohyung.common.extensions.viewBinding
@@ -19,7 +19,7 @@ internal class SplashFragment : BaseFragment<FragmentSplashBinding,
         SplashViewModel, SplashUiState>(R.layout.fragment_splash) {
 
     override val binding by viewBinding(FragmentSplashBinding::bind)
-    override val viewModel by viewModels<SplashViewModel>()
+    override val viewModel by navGraphViewModels<SplashViewModel>(R.id.nav_graph) { defaultViewModelProviderFactory }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
