@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.navGraphViewModels
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kr.ohyung.common.extensions.toast
@@ -20,7 +21,7 @@ internal class UserProfileFragment : BaseFragment<FragmentUserProfileBinding,
         UserProfileViewModel, UserProfileUiState>(R.layout.fragment_user_profile) {
 
     override val binding by viewBinding(FragmentUserProfileBinding::bind)
-    override val viewModel by viewModels<UserProfileViewModel>()
+    override val viewModel by navGraphViewModels<UserProfileViewModel>(R.id.nav_graph) { defaultViewModelProviderFactory }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.uiState.observe(viewLifecycleOwner, Observer(::render))
